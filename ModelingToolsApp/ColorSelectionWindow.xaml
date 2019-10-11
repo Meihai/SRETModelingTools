@@ -1,0 +1,61 @@
+﻿<Window x:Class="ModelingToolsApp.ColorSelectionWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+       
+        Title="颜色选择器" Height="180" Width="300" Background="AliceBlue">
+    <Window.Resources>
+        <Style x:Key="cprct" TargetType="{x:Type Rectangle}">
+            <Setter Property="Width" Value="25"/>
+            <Setter Property="Height" Value="25"/>
+            <Setter Property="Margin" Value="1"/>
+            <Setter Property="Stroke" Value="AliceBlue"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <EventSetter Event="PreviewMouseLeftButtonDown" Handler="Rectangle_PreviewMouseLeftButtonDown"/>
+        </Style>
+    </Window.Resources>
+    <Border  VerticalAlignment="Center" Width="290" Background="AliceBlue">
+        <StackPanel>
+            <WrapPanel HorizontalAlignment="Center">               
+                    <Rectangle Style="{StaticResource cprct}" Fill="White"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Gray"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Yellow"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Orange"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="HotPink"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Peru"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="RoyalBlue"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="SkyBlue"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Teal"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Tomato"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Black"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Sienna"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Gold"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="DarkBlue"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Magenta"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="LimeGreen"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Lime"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Blue"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Green"/>
+                    <Rectangle Style="{StaticResource cprct}" Fill="Red"/>
+              
+               
+            </WrapPanel>
+            <Grid Margin="5,20,15,15">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition></ColumnDefinition>
+                    <ColumnDefinition></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <TextBlock Margin="5,0,0,10" Grid.Row="0" Grid.Column="0" Width="100"  HorizontalAlignment="Center" Text="选择颜色："></TextBlock>
+                <Rectangle Margin="0,0,0,10" Grid.Row="0" Grid.Column="1" Width="100"  HorizontalAlignment="Center" Stroke="Black"  Fill="{Binding ExSelectedBrush, Mode=TwoWay}"></Rectangle>
+                <Button Grid.Row="1" Grid.Column="0" Width="100" HorizontalAlignment="Center" Click="Click_Cancel">取消</Button>
+                <Button Grid.Row="1" Grid.Column="1" Width="100" HorizontalAlignment="Center" Click="Click_Save">保存</Button>
+            </Grid>
+
+        </StackPanel>         
+        
+    </Border>
+   
+</Window>

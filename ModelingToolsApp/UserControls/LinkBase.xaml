@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="ModelingToolsApp.UserControls.LinkBase"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+           
+             Height="140" Width="140">
+    
+    <Canvas>
+      
+        <Path x:Name="pathStart"></Path>
+        <Path x:Name="pathEnd" Fill="Black"></Path>
+        <Path x:Name="pathLink" Stroke="Black" StrokeThickness="1" ></Path>
+        <TextBox x:Name="txtDescription"  HorizontalAlignment="Left" VerticalAlignment="Top"
+                 HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Background="White"
+                 TextWrapping="Wrap" BorderThickness="0" IsReadOnly="True" Visibility="Hidden" ></TextBox>
+
+        <Path x:Name="pathRange" Stroke="Transparent" StrokeThickness="13" 
+              MouseEnter="pathRange_MouseEnter" PreviewMouseDown="pathRange_PreviewMouseDown" ></Path>
+    </Canvas>
+</UserControl>

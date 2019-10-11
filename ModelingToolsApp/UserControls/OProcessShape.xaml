@@ -1,0 +1,12 @@
+﻿<UserControl x:Class="ModelingToolsApp.UserControls.OProcessShape"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"            
+             Height="42" Width="102">
+    <Grid Background="White">
+        <Rectangle Stroke="Black" Width="100" Height="40"  Fill="White"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" ></Rectangle>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center">流程</Label>
+        <Rectangle x:Name="path" Stroke="Black" Width="100" Height="40"  Fill="Transparent"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" MouseEnter="Rectangle_MouseEnter"></Rectangle>
+    </Grid>
+</UserControl>

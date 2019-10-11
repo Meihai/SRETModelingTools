@@ -1,0 +1,134 @@
+﻿<UserControl x:Class="ModelingToolsApp.UserControls.ModelingWorkSpace"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"            
+             xmlns:muc="clr-namespace:ModelingToolsApp.UserControls"            
+             Height="800" Width="1200">
+    <UserControl.Resources>
+        <DrawingBrush x:Key="ViewerGridLines" Viewport="0,0,40,40" ViewportUnits="Absolute" TileMode="Tile">
+            <DrawingBrush.Drawing>
+                <DrawingGroup>
+                    <DrawingGroup.Children>
+                        <GeometryDrawing Brush="White">
+                            <GeometryDrawing.Geometry>
+                                <RectangleGeometry Rect="0,0,2,2">
+                                </RectangleGeometry>                                
+                            </GeometryDrawing.Geometry>
+                        </GeometryDrawing>
+                        <GeometryDrawing Geometry="M0,0 L2,0">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="0.005" Brush="Black">
+                                    <Pen.DashStyle>
+                                        <DashStyle Dashes="0.1"></DashStyle>
+                                    </Pen.DashStyle>
+                                </Pen>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+
+                        <GeometryDrawing Geometry="M0,1 L2,1">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="0.01" Brush="Black">
+                                    <!--<Pen.DashStyle>
+                                        <DashStyle Dashes="1"></DashStyle>
+                                    </Pen.DashStyle>-->
+                                </Pen>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+
+                        <GeometryDrawing Geometry="M0,0 L0,2">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="0.005" Brush="Black">
+                                    <Pen.DashStyle>
+                                        <DashStyle Dashes="0.1"></DashStyle>
+                                    </Pen.DashStyle>
+                                </Pen>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+
+                        <GeometryDrawing Geometry="M1,0 L1,2">
+                            <GeometryDrawing.Pen>
+                                <Pen Thickness="0.01" Brush="Black">
+                                    <!--<Pen.DashStyle>
+                                        <DashStyle Dashes="1"></DashStyle>
+                                    </Pen.DashStyle>-->
+                                </Pen>
+                            </GeometryDrawing.Pen>
+                        </GeometryDrawing>
+
+                    </DrawingGroup.Children>
+                </DrawingGroup>
+            </DrawingBrush.Drawing>
+        </DrawingBrush>
+    </UserControl.Resources>
+    
+    <DockPanel>
+        <StackPanel Name="spProperty" Orientation="Horizontal" DockPanel.Dock="Left" Background="AliceBlue">
+            <StackPanel.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </StackPanel.LayoutTransform>
+            <Button Name="btnShowProperty" BorderThickness="1,1,1,1" Background="AliceBlue" Content="  工具箱  " Focusable="False" Click="btnShowProperty_Click" ></Button>
+        </StackPanel >
+        <Border x:Name="brdProperty" DockPanel.Dock="Left" Width="200" BorderThickness="0.2" BorderBrush="Black" Background="AliceBlue" >
+
+            <DockPanel>
+                <StackPanel Background="AliceBlue"  DockPanel.Dock="Top">
+                    <Label>建模元素：</Label>                                      
+                    <muc:OEntranceShape Margin="0,0,0,15"></muc:OEntranceShape>
+                    <muc:OExitShape Margin="0,0,0,15"></muc:OExitShape>
+                    <muc:OTerminalShape Margin="0,0,0,15"></muc:OTerminalShape>
+                    <muc:OOperationShape Margin="0,0,0,15"></muc:OOperationShape>
+                    <muc:OReliableProfile Margin="0,0,0,15"></muc:OReliableProfile>
+                    <muc:OSequentialTransfer Margin="0,0,0,5"></muc:OSequentialTransfer>
+                    <muc:OProbabilityTransfer Margin="0,0,0,5"></muc:OProbabilityTransfer>    
+                    <Label>当前建模元素:</Label>
+                    <Label Content="{Binding CurrentSelectedModel}"></Label> <!--{Binding CurrentSelectedModel,Mode=TwoWay}-->
+                    <Label>元素属性：</Label>                    
+                </StackPanel>
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled" Background="AliceBlue" VerticalAlignment="Top">
+                    <Grid x:Name="gridProperty" Background="AliceBlue" >
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition MinWidth="50">
+                            </ColumnDefinition>
+                            <ColumnDefinition MinWidth="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                    </Grid>
+                </ScrollViewer>
+            </DockPanel>
+        </Border>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" Background="LightSlateGray" SizeChanged="ScrollViewer_SizeChanged">
+            <Canvas x:Name="backviewer" MinWidth="1000" MinHeight="1320">
+                <Label x:Name="txtDebug"></Label>
+                
+                <Rectangle Width="800" Height="1120" Fill="White"   Margin="100,100,100,100"></Rectangle>                
+                <Rectangle Width="800" Height="1120" Fill="{StaticResource ViewerGridLines}" Margin="100,100,100,100" ></Rectangle>
+                
+
+                <Canvas x:Name="viewer" MinWidth="1000" MinHeight="1320" Background="Transparent"
+                        AllowDrop="True" MouseDown="viewer_MouseDown" PreviewMouseDown="viewer_PreviewMouseDown" 
+                        MouseMove="viewer_MouseMove"  
+                        DragEnter="viewer_DragEnter" DragOver="viewer_DragOver" DragLeave="viewer_DragLeave"  Drop="viewer_Drop" >
+
+                    <muc:CtrlLine x:Name="GCtrlLine" Visibility="Hidden"></muc:CtrlLine>
+                    <muc:CtrlShape x:Name="GCtrlShape" Visibility="Hidden"></muc:CtrlShape>
+                    <Rectangle x:Name="GMoveShape" Visibility="Hidden" Stroke="Lime" StrokeDashArray="3,3"></Rectangle>
+
+                    <!--最多产生4个停靠点-->
+                     
+                    <muc:DockNode x:Name="GLinkNode0" Visibility="Hidden"></muc:DockNode>
+                    <muc:DockNode x:Name="GLinkNode1" Visibility="Hidden"></muc:DockNode>
+                    <muc:DockNode x:Name="GLinkNode2" Visibility="Hidden"></muc:DockNode>
+                    <muc:DockNode x:Name="GLinkNode3" Visibility="Hidden"></muc:DockNode>
+
+                    <Polyline x:Name="tmpLine" Stroke="Black" StrokeDashArray="3,3" Visibility="Hidden"></Polyline>
+                    
+                    <Path x:Name="tmpLinkPath" Stroke="Black" StrokeDashArray="3,3" Visibility="Hidden"></Path>
+                    
+                    <muc:CtrlMultiSelector x:Name="GMultiSelector"></muc:CtrlMultiSelector>
+                    <muc:DescEditor x:Name="GDescEditor"></muc:DescEditor>
+
+                </Canvas>
+            </Canvas>
+        </ScrollViewer>
+
+    </DockPanel>
+    
+</UserControl>

@@ -1,0 +1,40 @@
+﻿<Window x:Class="ModelingToolsAppWithMVVM.View.UserDataGridView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        Title="用户DataGrid视图测试"
+        mc:Ignorable="d ignore"
+        DataContext="{Binding UserView, Source={StaticResource Locator}}">
+
+    <Grid Margin="0,0,2,0">
+        <DataGrid x:Name="dataGrid" AutoGenerateColumns="False" HorizontalAlignment="Left" VerticalAlignment="Top" ItemsSource="{Binding mylist}">
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding ID}" Header="编号"/>
+                <DataGridTextColumn Binding="{Binding Name}" Header="姓名" Width="100"/>
+                <DataGridTextColumn Binding="{Binding Age}" Header="年龄"/>
+                <DataGridTextColumn Binding="{Binding Sex}" Header="性别" Width="60"/>
+                <DataGridTextColumn Binding="{Binding Remarks}" Header="备注" Width="172"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <!--
+        <Label x:Name="labID" Content="编号：" HorizontalAlignment="Left" Margin="17,152,0,-53"/>
+        <TextBox x:Name="txtID"  IsEnabled ="False"  Text="{Binding ID}" HorizontalAlignment="Left" Height="22" Margin="63,154,0,-52" TextWrapping="Wrap" Width="60"/>
+        <Label x:Name="labName" Content="姓名：" HorizontalAlignment="Left" Margin="143,154,0,-55" />
+        <TextBox x:Name="txtName" Text="{Binding Name}" HorizontalAlignment="Left" Height="22" Margin="189,152,0,-50" TextWrapping="Wrap" Width="62"/>
+        <Label x:Name="labPAge" Content="年龄：" HorizontalAlignment="Left" Margin="273,152,0,-53" VerticalAlignment="Top" RenderTransformOrigin="-0.233,0.68"/>
+        <TextBox x:Name="txtAge" Text="{Binding Age}" HorizontalAlignment="Left" Height="22" Margin="319,152,0,-50" TextWrapping="Wrap" Width="58"/>
+        <Label x:Name="labSex" Content="性别：" HorizontalAlignment="Left" Margin="17,188,0,-89" RenderTransformOrigin="-0.233,0.68"/>
+        <ComboBox Text="{Binding Sex}"  SelectedIndex="0" x:Name="comboBox" HorizontalAlignment="Left" Margin="63,191,0,-88" Width="61">
+            <ComboBoxItem Tag="1" Content="男"/>
+            <ComboBoxItem Tag="2" Content="女"/>
+        </ComboBox>
+        <Label x:Name="labRemarks" Content="备注：" HorizontalAlignment="Left" Margin="144,187,0,-88" VerticalAlignment="Top" RenderTransformOrigin="-0.233,0.68"/>
+        <TextBox x:Name="txtRemarks" Text="{Binding Remarks}" HorizontalAlignment="Left" Height="22" Margin="189,184,0,-82" TextWrapping="Wrap" VerticalAlignment="Top" Width="188" RenderTransformOrigin="0.5,0.5"/>
+        <Button x:Name="butSave" Command="{Binding AddCommand}" Content="新增" HorizontalAlignment="Left" Margin="70,240,0,-135" VerticalAlignment="Top" Width="69" Height="19" RenderTransformOrigin="0.466,0.941"/>
+        <Button x:Name="butUpdate" Command="{Binding UpdateCommand}" Content="修改" HorizontalAlignment="Left" Margin="160,240,0,-135" VerticalAlignment="Top" Width="69" Height="19" RenderTransformOrigin="0.466,0.941"/>
+        <Button x:Name="butDelete" Command="{Binding DeleteCommand}" Content="删除" HorizontalAlignment="Left" Margin="250,240,0,-135" VerticalAlignment="Top" Width="69" Height="19" RenderTransformOrigin="0.466,0.941"/>
+       -->
+     </Grid>
+</Window>

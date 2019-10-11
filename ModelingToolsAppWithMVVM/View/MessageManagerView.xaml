@@ -1,0 +1,60 @@
+﻿<Window x:Class="ModelingToolsAppWithMVVM.View.MessageManagerView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:ignore="http://www.galasoft.ch/ignore"
+        xmlns:local="clr-namespace:ModelingToolsAppWithMVVM.Model"
+        mc:Ignorable="d ignore" 
+        Title="报文管理窗口" Icon="NetIco.ico" Height="600" Width="800"
+        DataContext="{Binding MessageManagerView, Source={StaticResource Locator}}">   
+    <Grid>       
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition MinWidth="100"/>
+            <ColumnDefinition Width="5"/>
+            <ColumnDefinition MinWidth="600"/>           
+        </Grid.ColumnDefinitions>
+        <TreeView ItemsSource="{Binding MessageManager.MessageGroups}"  Grid.Column="0">
+            <TreeView.ItemContainerStyle>
+                <!-- This Style binds a TreeViewItem to a TreeViewItemViewModel. -->
+                <Style TargetType="{x:Type TreeViewItem}">
+                    <Setter Property="IsExpanded" Value="{Binding IsExpanded,Mode=TwoWay}"/>
+                    <Setter Property="IsSelected" Value="{Binding IsSelected,Mode=TwoWay}"/>
+                    <Setter Property="FontWeight" Value="Normal"/>
+                    <Style.Triggers>
+                        <Trigger Property="IsSelected" Value="True">
+                            <Setter Property="FontWeight" Value="Bold"/>
+                        </Trigger>
+                    </Style.Triggers>
+                </Style>       
+            </TreeView.ItemContainerStyle>
+            <TreeView.Resources>
+                <HierarchicalDataTemplate 
+                    DataType="{x:Type local:MessageGroupTreeModel}" 
+                    ItemsSource="{Binding Children}">
+                    
+                    <StackPanel Orientation="Horizontal">
+                        <!--
+                        <Image Width="16" Height="16" Margin="3,0" Source="Images\Region.png" />
+                        -->
+                        <TextBlock Text="{Binding MessageGroupName}" />
+                    </StackPanel>
+                </HierarchicalDataTemplate>
+
+               
+                <DataTemplate DataType="{x:Type local:MessageTreeModel}">
+                    <StackPanel Orientation="Horizontal">
+                        <!--
+                        <Image Width="16" Height="16" Margin="3,0" Source="Images\City.png" />
+                        -->
+                        <TextBlock Text="{Binding MessageName}" />
+                    </StackPanel>
+                </DataTemplate>
+                
+            </TreeView.Resources>
+        </TreeView>
+        <GridSplitter Grid.Column="1" Width="5" HorizontalAlignment="Stretch"/>
+        <ContentControl Content="{Binding CurrentView}" Grid.Column="2"/>
+        
+    </Grid>
+</Window>

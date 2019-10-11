@@ -1,0 +1,19 @@
+﻿
+
+<UserControl x:Class="ModelingToolsAppWithMVVM.Common.ChartCommon.OInterfaceInteractionObject"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             
+             Height="40" Width="102">
+    <Grid>
+
+        <Ellipse Stroke="Black" Width="40" Height="40"  Fill="White" ToolTip="接口交联对象"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" IsHitTestVisible="False"></Ellipse>
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center"></Label>
+        <Ellipse x:Name="path" Stroke="Black" Width="40" Height="40" ToolTip="接口交联对象" Fill="Transparent"
+                   HorizontalAlignment="Center" VerticalAlignment="Center" MouseEnter="Ellipse_MouseEnter"></Ellipse>
+
+      
+    </Grid>
+
+</UserControl>

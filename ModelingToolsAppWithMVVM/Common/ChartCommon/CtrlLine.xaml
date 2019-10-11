@@ -1,0 +1,10 @@
+﻿<UserControl x:Class="ModelingToolsAppWithMVVM.Common.ChartCommon.CtrlLine"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"           
+             Height="107" Width="224">
+    <Canvas x:Name="viewer">
+        <!--
+         <Path x:Name="pathTmp" Stroke="Black" StrokeDashArray="3,3" StrokeThickness="1"></Path> 
+        -->
+    </Canvas>
+</UserControl>

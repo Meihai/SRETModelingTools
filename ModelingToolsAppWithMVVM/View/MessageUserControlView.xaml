@@ -1,0 +1,59 @@
+﻿<UserControl x:Class="ModelingToolsAppWithMVVM.View.MessageUserControlView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"              
+             Height="auto" Width="auto"
+             DataContext="{Binding}">
+    
+        <!--
+             DataContext="{Binding MessageView, Source={StaticResource Locator}}"
+        -->
+       <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="LightSlateGray">
+        <Grid Background="AliceBlue">
+
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="*"/>
+
+            </Grid.RowDefinitions>
+
+            <TextBlock  Text="报文名称：" FontSize="20"  Grid.Row="0" Width="100" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10,10,5,5"></TextBlock>
+            <TextBox Text="温度采集报文"  FontSize="20" Grid.Row="0" Width="250" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="110,10,5,5"></TextBox>
+            <TextBlock Text="报文类型：" FontSize="20" Grid.Row="0"  HorizontalAlignment="Left" Width="100" VerticalAlignment="Center" Margin="400,10,5,5"></TextBlock>
+            <TextBlock Text="发送报文"  FontSize="20"  Grid.Row="0" HorizontalAlignment="Left" VerticalAlignment="Center"  Margin="500,10,5,5"></TextBlock>
+
+            <Label Content="报文字段配置：" FontSize="20" Grid.Row="1"  HorizontalAlignment="Left" Margin="5,5,5,5"></Label>
+            <Button Content="添加" FontSize="20" Name="btnAdd" Grid.Row="1" HorizontalAlignment="Left" Width="100" Height="30" Margin="200,5,5,5" Command="{Binding CmdAdd}"  />
+            <Button Content="保存" FontSize="20" Name="btnSave" Grid.Row="1" HorizontalAlignment="Left" Width="100" Height="30" Margin="320,5,5,5" Command="{Binding CmdSave}" />
+            <Button Content="删除" FontSize="20" Name="btnDelete" Grid.Row="1" HorizontalAlignment="Left" Width="100" Height="30" Margin="440,5,5,5" Command="{Binding CmdDelete}"/>
+
+
+            <ScrollViewer Grid.Row="2">
+                <DataGrid  x:Name="dataMeaningsGrid" ItemsSource="{Binding Message.SortedDataMeaningList}" AutoGenerateColumns="False" CanUserAddRows="{Binding CanUserAddRows}"
+                           SelectedItem="{Binding SelectedItem}" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="字段名称" Width="80" Binding="{Binding Name}"/>
+                        <DataGridTextColumn Header="开始字节" Width="80" Binding="{Binding StartBit}"/>
+                        <DataGridTextColumn Header="占用长度" Width="80" Binding="{Binding Length}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="初始值" Width="80" Binding="{Binding InitValue}"/>
+                        <DataGridTextColumn Header="描述信息" Width="80" Binding="{Binding Description}"/>
+                        <DataGridTextColumn Header="小数位数" Width="80" Binding="{Binding Scale}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="单位" Width="80" Binding="{Binding Unit}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="是否为位" Width="80" Binding="{Binding IsBit}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="位顺序" Width="80" Binding="{Binding BitOrder}"/>
+                        <DataGridTextColumn Header="尺度因子" Width="80" Binding="{Binding DividedBy}"/>
+                        <DataGridTextColumn Header="偏移值" Width="80" Binding="{Binding Offset}"/>
+                        <DataGridTextColumn Header="IsCrc" Width="80" Binding="{Binding IsCrc}"/>
+                        <DataGridTextColumn Header="值类型" Width="80" Binding="{Binding ValueType}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="关联变量ID" Width="80" Binding="{Binding RelatedValueId}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="注入方式" Width="80" Binding="{Binding InjectedMode}"></DataGridTextColumn>
+                        <DataGridTextColumn Header="是否用于解析" Width="80" Binding="{Binding IsUsedForParser}"></DataGridTextColumn>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </ScrollViewer>
+        </Grid>
+    </ScrollViewer>
+</UserControl>

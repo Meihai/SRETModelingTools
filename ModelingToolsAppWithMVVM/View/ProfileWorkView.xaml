@@ -1,0 +1,54 @@
+﻿<UserControl x:Class="ModelingToolsAppWithMVVM.View.ProfileWorkView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:muc="clr-namespace:ModelingToolsAppWithMVVM.Common.ChartCommon"  
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+             xmlns:ignore="http://www.galasoft.ch/ignore"
+             xmlns:vm="clr-namespace:ModelingToolsAppWithMVVM.ViewModel"
+             xmlns:local="clr-namespace:ModelingToolsAppWithMVVM.View"
+             mc:Ignorable="d ignore"
+             DataContext="{Binding ProfileWorkView, Source={StaticResource Locator}}" 
+           >
+    <DockPanel>
+
+        <StackPanel Name="spMessageProperty" Orientation="Horizontal" DockPanel.Dock="Bottom" Background="AliceBlue">
+            <StackPanel.LayoutTransform>
+                <RotateTransform Angle="0"/>
+            </StackPanel.LayoutTransform>
+            <Button Name="btnMessageShowProperty" DockPanel.Dock="Bottom" BorderThickness="1,1,1,1" Background="AliceBlue"
+                 Content="全局报文管理"  Width="100" Focusable="False"  Click="btnMessageManagerShowPropertyClick">
+            </Button>
+        </StackPanel>
+        <Border x:Name="brdMessageManagerProperty" DockPanel.Dock="Bottom"  Height="200" BorderThickness="0.2" BorderBrush="Black"
+                Background="AliceBlue">
+            <ContentControl Name="messageManagerBox" Content="{Binding  MessageView}"/>
+        </Border>
+
+        <StackPanel Name="spProperty" Orientation="Horizontal" DockPanel.Dock="Right" Background="AliceBlue">
+            <StackPanel.LayoutTransform>
+                <RotateTransform Angle="90"/>
+            </StackPanel.LayoutTransform>
+            <Button Name="btnShowProperty" DockPanel.Dock="Right" BorderThickness="1,1,1,1" Background="AliceBlue"
+                 Content="属性"  Width="100" Focusable="False" Click="btnShowPropertyClick" >
+            </Button>
+        </StackPanel>
+        <Border x:Name="brdProperty" DockPanel.Dock="Right" Width="200" BorderThickness="0.2" BorderBrush="Black"
+                Background="AliceBlue">
+            <ContentControl Name="propertyBox" Content="{Binding PropertyView}"/>
+        </Border>
+
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto" Background="LightSlateGray">
+            <!--
+            <muc:InterfaceInteractionWorkModel x:Name="viewer" Background="White"  Focusable="true"  MinHeight="1320" MinWidth="1000"
+                               AllowDrop="True"
+                 >
+            </muc:InterfaceInteractionWorkModel>  
+            -->
+            <ContentControl Name="workPanel" Content="{Binding WorkPanelView}"/>
+
+        </ScrollViewer>
+
+    </DockPanel>
+</UserControl>
+

@@ -1,0 +1,43 @@
+﻿<UserControl x:Class="ModelingToolsAppWithMVVM.View.InterfaceCrossLinkPropertyView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d"  
+             xmlns:ignore="http://www.galasoft.ch/ignore"
+             xmlns:vm="clr-namespace:ModelingToolsAppWithMVVM.ViewModel"
+             xmlns:local="clr-namespace:ModelingToolsAppWithMVVM.View"           
+             DataContext="{Binding}"
+            >
+
+    <!--
+             DataContext="{Binding InterfaceCrossLinkPropertyView, Source={StaticResource Locator}}"
+             -->
+    <DockPanel>
+        <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+            <Grid Background="AliceBlue" DockPanel.Dock="Bottom">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="50"></ColumnDefinition>
+                    <ColumnDefinition Width="250"></ColumnDefinition>
+                    <ColumnDefinition Width="*"></ColumnDefinition>
+                </Grid.ColumnDefinitions>
+                <Label Content="编号:" Margin="5,5,5,5" Grid.Row="0" Grid.Column="0"></Label>
+                <Label Content="{Binding CrossLinkProperty.Id}" Margin="5,5,5,5" Grid.Row="0" Grid.Column="1"></Label>
+
+                <Label Content="名称:" Margin="5,5,5,5" Grid.Row="1"></Label>
+                <TextBox Text="{Binding CrossLinkProperty.Name}"  Margin="5,5,5,5" Width="100" HorizontalAlignment="Left" Grid.Row="1" Grid.Column="1"></TextBox>
+                <Label Content="类别:" Margin="5,5,5,5" Grid.Row="2" Grid.Column="0"></Label>
+                <Label Content="{Binding CrossLinkProperty.Type}" Margin="5,5,5,5" Grid.Row="2" Grid.Column="1"></Label>
+                <Button Content="接口配置" Grid.Row="3" Width="100" Margin="5,5,5,5" Command="{Binding  GotoInterfacePropertyViewCommand}" HorizontalAlignment="Left" Grid.ColumnSpan="2"/>                
+                
+            </Grid>
+        </ScrollViewer>       
+    </DockPanel>
+</UserControl>

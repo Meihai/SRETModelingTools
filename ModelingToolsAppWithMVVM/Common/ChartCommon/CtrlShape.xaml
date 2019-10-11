@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="ModelingToolsAppWithMVVM.Common.ChartCommon.CtrlShape"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"            
+             xmlns:muc="clr-namespace:ModelingToolsAppWithMVVM.Common.ChartCommon"            
+             Height="60" Width="120">  
+
+        <Grid x:Name="viewer">
+            <Rectangle Stroke="Gray" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="None" Margin="6,6,6,6"></Rectangle>
+            <Rectangle Stroke="Lime" StrokeDashArray="3,3" HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Stretch="None" Margin="6,6,6,6"></Rectangle>
+            <Rectangle Stroke="Transparent" StrokeThickness="7" HorizontalAlignment= "Stretch" VerticalAlignment="Stretch" Stretch="None" Margin="3,3,3,3" 
+                   MouseEnter="Rectangle_MouseEnter" MouseDown="Rectangle_MouseDown"></Rectangle>
+            
+            <muc:CtrlNode HorizontalAlignment="Left" VerticalAlignment="Top"   CtrlNodeType="LEFT_TOP"></muc:CtrlNode>
+            <muc:CtrlNode HorizontalAlignment="Left" VerticalAlignment="Center"   CtrlNodeType="LEFT"></muc:CtrlNode>
+            <muc:CtrlNode HorizontalAlignment="Left" VerticalAlignment="Bottom"   CtrlNodeType="LEFT_BOTTOM" ></muc:CtrlNode>
+            <muc:CtrlNode HorizontalAlignment="Right" VerticalAlignment="Top"   CtrlNodeType="RIGHT_TOP" ></muc:CtrlNode>
+            <muc:CtrlNode HorizontalAlignment="Right" VerticalAlignment="Center"   CtrlNodeType="RIGHT" ></muc:CtrlNode>
+            <muc:CtrlNode HorizontalAlignment="Right" VerticalAlignment="Bottom"   CtrlNodeType="RIGHT_BOTTOM" ></muc:CtrlNode>
+            <muc:CtrlNode HorizontalAlignment="Center" VerticalAlignment="Top"   CtrlNodeType="TOP" ></muc:CtrlNode>
+            <muc:CtrlNode HorizontalAlignment="Center" VerticalAlignment="Bottom"   CtrlNodeType="BOTTOM"></muc:CtrlNode>
+            
+        </Grid>
+
+  
+</UserControl>

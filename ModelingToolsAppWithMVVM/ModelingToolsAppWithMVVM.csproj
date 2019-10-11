@@ -1,0 +1,638 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{7DB3059D-A7AC-4D26-94E6-DCDC73B01AAF}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>ModelingToolsAppWithMVVM</RootNamespace>
+    <AssemblyName>ModelingToolsAppWithMVVM</AssemblyName>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="CommonServiceLocator, Version=2.0.2.0, Culture=neutral, PublicKeyToken=489b6accfaf20ef0, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.2.0.2\lib\net45\CommonServiceLocator.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FParsec, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40ccfc0a09edbb5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\FParsec.1.0.3\lib\net40-client\FParsec.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FParsecCS, Version=1.0.0.0, Culture=neutral, PublicKeyToken=40ccfc0a09edbb5d, processorArchitecture=MSIL">
+      <HintPath>..\packages\FParsec.1.0.3\lib\net40-client\FParsecCS.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="FSharp.Core, Version=4.4.3.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\FSharp.Core.4.3.3\lib\net45\FSharp.Core.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight, Version=5.4.1.0, Culture=neutral, PublicKeyToken=e7570ab207bcb616, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Extras, Version=5.4.1.0, Culture=neutral, PublicKeyToken=669f0b5e8f868abf, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Extras.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="GalaSoft.MvvmLight.Platform, Version=5.4.1.0, Culture=neutral, PublicKeyToken=5f873c45e98af8a1, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\GalaSoft.MvvmLight.Platform.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MathNet.Numerics, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.4.7.0\lib\net40\MathNet.Numerics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MathNet.Numerics.FSharp, Version=4.7.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Numerics.FSharp.4.7.0\lib\net45\MathNet.Numerics.FSharp.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="MathNet.Symbolics, Version=0.20.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\MathNet.Symbolics.0.20.0\lib\net45\MathNet.Symbolics.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Interactivity, Version=4.5.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\MvvmLightLibs.5.4.1.1\lib\net45\System.Windows.Interactivity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="Commands\DelegateCommand.cs" />
+    <Compile Include="Common\BaudRateTypes.cs" />
+    <Compile Include="Common\ByteUtils.cs" />
+    <Compile Include="Common\ChartCommon\BaseWorkModel.cs" />
+    <Compile Include="Common\ChartCommon\ChangedPropertys.cs" />
+    <Compile Include="Common\ChartCommon\ChartDelegateDefines.cs" />
+    <Compile Include="Common\ChartCommon\CtrlLine.xaml.cs">
+      <DependentUpon>CtrlLine.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\CtrlMultiSelector.xaml.cs">
+      <DependentUpon>CtrlMultiSelector.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\CtrlNode.xaml.cs">
+      <DependentUpon>CtrlNode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\CtrlNodeTypes.cs" />
+    <Compile Include="Common\ChartCommon\CtrlShape.xaml.cs">
+      <DependentUpon>CtrlShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\DescEditor.xaml.cs">
+      <DependentUpon>DescEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\DockedLinkNodeArgs.cs" />
+    <Compile Include="Common\ChartCommon\DockNode.xaml.cs">
+      <DependentUpon>DockNode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\FlowChartTypes.cs" />
+    <Compile Include="Common\ChartCommon\FlowChartUtil.cs" />
+    <Compile Include="Common\ChartCommon\GlobalMouseArgs.cs" />
+    <Compile Include="Common\ChartCommon\GlobalMouseHook.cs" />
+    <Compile Include="Common\ChartCommon\IFlowChartBase.cs" />
+    <Compile Include="Common\ChartCommon\InterfaceInteractionLink.cs" />
+    <Compile Include="Common\ChartCommon\InterfaceInteractionObject.cs" />
+    <Compile Include="Common\ChartCommon\InterfaceInteractionTestedObject.cs" />
+    <Compile Include="Common\ChartCommon\InterfaceInteractionWorkModel.cs" />
+    <Compile Include="Common\ChartCommon\IOShape.cs" />
+    <Compile Include="Common\ChartCommon\LineCtrlPoint.cs" />
+    <Compile Include="Common\ChartCommon\LinePointTypes.cs" />
+    <Compile Include="Common\ChartCommon\LineTerminalPoint.cs" />
+    <Compile Include="Common\ChartCommon\LineTypes.cs" />
+    <Compile Include="Common\ChartCommon\LinkBase.xaml.cs">
+      <DependentUpon>LinkBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\LinkLineTypes.cs" />
+    <Compile Include="Common\ChartCommon\LinkNode.xaml.cs">
+      <DependentUpon>LinkNode.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\LinkNodeArgs.cs" />
+    <Compile Include="Common\ChartCommon\LinkNodeTypes.cs" />
+    <Compile Include="Common\ChartCommon\LinkProbTransfer.cs" />
+    <Compile Include="Common\ChartCommon\LinkSeqTransfer.cs" />
+    <Compile Include="Common\ChartCommon\OEntranceShape.xaml.cs">
+      <DependentUpon>OEntranceShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\OExitShape.xaml.cs">
+      <DependentUpon>OExitShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\OInterfaceInteractionLink.xaml.cs">
+      <DependentUpon>OInterfaceInteractionLink.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\OInterfaceInteractionObject.xaml.cs">
+      <DependentUpon>OInterfaceInteractionObject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\OInterfaceTestedObject.xaml.cs">
+      <DependentUpon>OInterfaceTestedObject.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\OMiMo.xaml.cs">
+      <DependentUpon>OMiMo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\OOperationShape.xaml.cs">
+      <DependentUpon>OOperationShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\OProbabilityTransfer.xaml.cs">
+      <DependentUpon>OProbabilityTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\OReliableProfile.xaml.cs">
+      <DependentUpon>OReliableProfile.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\OSequentialTransfer.xaml.cs">
+      <DependentUpon>OSequentialTransfer.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\OTerminalShape.xaml.cs">
+      <DependentUpon>OTerminalShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\ProfileWorkModel.cs" />
+    <Compile Include="Common\ChartCommon\ShapeBase.xaml.cs">
+      <DependentUpon>ShapeBase.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Common\ChartCommon\ShapeEntrance.cs" />
+    <Compile Include="Common\ChartCommon\ShapeExit.cs" />
+    <Compile Include="Common\ChartCommon\ShapeOperation.cs" />
+    <Compile Include="Common\ChartCommon\ShapeReliableProfile.cs" />
+    <Compile Include="Common\ChartCommon\ShapeTerminal.cs" />
+    <Compile Include="Common\ChartCommon\SimpleLinkNode.cs" />
+    <Compile Include="Common\ComparisonMode.cs" />
+    <Compile Include="Common\ContinuousVariable.cs" />
+    <Compile Include="Common\CrcUtils.cs" />
+    <Compile Include="Common\DataBitTypes.cs" />
+    <Compile Include="Common\DataMeaning.cs" />
+    <Compile Include="Common\DiscreteVariable.cs" />
+    <Compile Include="Common\DomainDefinition.cs" />
+    <Compile Include="Common\EnumHelper.cs" />
+    <Compile Include="Common\FunctionExpressionParser.cs" />
+    <Compile Include="Common\IndependentVariable.cs" />
+    <Compile Include="Common\DataParityTypes.cs" />
+    <Compile Include="Common\InjectedModeTypes.cs" />
+    <Compile Include="Common\RandomStringBuilder.cs" />
+    <Compile Include="Common\RunMethod.cs" />
+    <Compile Include="Common\ServiceModel\ConstraintCondition.cs" />
+    <Compile Include="Common\ServiceModel\EntranceSM.cs" />
+    <Compile Include="Common\ServiceModel\ExitSM.cs" />
+    <Compile Include="Common\ServiceModel\IILinkSM.cs" />
+    <Compile Include="Common\ServiceModel\IIObjectSM.cs" />
+    <Compile Include="Common\ServiceModel\IITestedObjectSM.cs" />
+    <Compile Include="Common\ServiceModel\LinkProbabilityTransferSM.cs" />
+    <Compile Include="Common\ServiceModel\LinkSeqTransferSM.cs" />
+    <Compile Include="Common\ServiceModel\ReliableProfileSM.cs" />
+    <Compile Include="Common\ServiceModel\TerminalSM.cs" />
+    <Compile Include="Common\ServiceModel\ValueSM.cs" />
+    <Compile Include="Common\ServiceModel\OperationSM.cs" />
+    <Compile Include="Common\StopBitTypes.cs" />
+    <Compile Include="Common\ValueTriggerMethod.cs" />
+    <Compile Include="Model\EntrancePropertyModel.cs" />
+    <Compile Include="Model\ExitPropertyModel.cs" />
+    <Compile Include="Model\InterfaceConfig.cs" />
+    <Compile Include="Common\InterfaceTypes.cs" />
+    <Compile Include="Common\InterfaceValue.cs" />
+    <Compile Include="Common\IOTypes.cs" />
+    <Compile Include="Model\InterfaceCrossLinkPropertyModel.cs" />
+    <Compile Include="Model\InterfaceInteractionObjectModel.cs" />
+    <Compile Include="Model\InterfaceInteractionTestedObjectPropertyModel.cs" />
+    <Compile Include="Model\Message.cs" />
+    <Compile Include="Common\ProbabilityEvent.cs" />
+    <Compile Include="Common\ProbabilityGenerationModel.cs" />
+    <Compile Include="Common\ValueTypes.cs" />
+    <Compile Include="Common\ProtocolTypes.cs" />
+    <Compile Include="Common\ReliabilityModelingTypes.cs" />
+    <Compile Include="Manager\FactoryImpl.cs" />
+    <Compile Include="Manager\ICrossLinkingManager.cs" />
+    <Compile Include="Manager\IFactory.cs" />
+    <Compile Include="Model\MessageGroup.cs" />
+    <Compile Include="Model\MessageGroupTreeModel.cs" />
+    <Compile Include="Model\MessageManagerModel.cs" />
+    <Compile Include="Model\MessageTreeModel.cs" />
+    <Compile Include="Model\OperationPropertyModel.cs" />
+    <Compile Include="Model\ProbTransferPropertyModel.cs" />
+    <Compile Include="Model\ReliableProfilePropertyModel.cs" />
+    <Compile Include="Model\SeqTransferPropertyModel.cs" />
+    <Compile Include="Model\TerminalPropertyModel.cs" />
+    <Compile Include="Model\TreeViewItemModel.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="Model\UserInfoModel.cs" />
+    <Compile Include="Model\WelcomeModel.cs" />
+    <Compile Include="Test\MessageTestUtil.cs" />
+    <Compile Include="ViewModel\BothWayBindViewModel.cs" />
+    <Compile Include="ViewModel\EntrancePropertyViewModel.cs" />
+    <Compile Include="ViewModel\ExitPropertyViewModel.cs" />
+    <Compile Include="ViewModel\InterfaceCrossLinkPropertyViewModel.cs" />
+    <Compile Include="ViewModel\InterfaceInteractionModelingViewModel.cs" />
+    <Compile Include="ViewModel\InterfaceInteractionObjectViewModel.cs" />
+    <Compile Include="ViewModel\InterfaceInteractionTestedObjectPropertyViewModel.cs" />
+    <Compile Include="ViewModel\InterfaceInteractionWorkViewModel.cs" />
+    <Compile Include="ViewModel\InterfacePropertyViewModel.cs" />
+    <Compile Include="ViewModel\IOShape.cs" />
+    <Compile Include="ViewModel\ISelectable.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\MessageGroupViewModel.cs" />
+    <Compile Include="ViewModel\MessageManagerViewModel.cs" />
+    <Compile Include="ViewModel\MessageViewModel.cs" />
+    <Compile Include="ViewModel\OperationPropertyViewModel.cs" />
+    <Compile Include="ViewModel\ProbTransferPropertyViewModel.cs" />
+    <Compile Include="ViewModel\ProfileWorkViewModel.cs" />
+    <Compile Include="ViewModel\ReliableProfilePropertyViewModel.cs" />
+    <Compile Include="ViewModel\SeqTransferPropertyViewModel.cs" />
+    <Compile Include="ViewModel\SwitchView1ViewModel.cs" />
+    <Compile Include="ViewModel\SwitchView2ViewModel.cs" />
+    <Compile Include="ViewModel\SwitchViewViewModel.cs" />
+    <Compile Include="ViewModel\TerminalPropertyViewModel.cs" />
+    <Compile Include="ViewModel\UserViewModel.cs" />
+    <Compile Include="ViewModel\ViewModelLocator.cs" />
+    <Compile Include="ViewModel\WelcomeViewModel.cs" />
+    <Compile Include="View\BothWayBindView.xaml.cs">
+      <DependentUpon>BothWayBindView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\EntrancePropertyView.xaml.cs">
+      <DependentUpon>EntrancePropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ExitPropertyView.xaml.cs">
+      <DependentUpon>ExitPropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InterfaceConfigDataGridView.xaml.cs">
+      <DependentUpon>InterfaceConfigDataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InterfaceCrossLinkPropertyView.xaml.cs">
+      <DependentUpon>InterfaceCrossLinkPropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InterfaceInteractionModelingView.xaml.cs">
+      <DependentUpon>InterfaceInteractionModelingView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InterfaceInteractionObjectPropertyView.xaml.cs">
+      <DependentUpon>InterfaceInteractionObjectPropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InterfaceInteractionTestedObjectPropertyView.xaml.cs">
+      <DependentUpon>InterfaceInteractionTestedObjectPropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InterfaceInteractionToolView.xaml.cs">
+      <DependentUpon>InterfaceInteractionToolView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InterfaceInteractionWorkView.xaml.cs">
+      <DependentUpon>InterfaceInteractionWorkView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\InterfacePropertyView.xaml.cs">
+      <DependentUpon>InterfacePropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageGroupAddView.xaml.cs">
+      <DependentUpon>MessageGroupAddView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageGroupUserControlView.xaml.cs">
+      <DependentUpon>MessageGroupUserControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageGroupView.xaml.cs">
+      <DependentUpon>MessageGroupView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageManagerUserControlView.xaml.cs">
+      <DependentUpon>MessageManagerUserControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageManagerView.xaml.cs">
+      <DependentUpon>MessageManagerView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageUserControlView.xaml.cs">
+      <DependentUpon>MessageUserControlView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MessageView.xaml.cs">
+      <DependentUpon>MessageView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OEntranceShape.xaml.cs">
+      <DependentUpon>OEntranceShape.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\OperationPropertyView.xaml.cs">
+      <DependentUpon>OperationPropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProbTransferPropertyView.xaml.cs">
+      <DependentUpon>ProbTransferPropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ProfileWorkView.xaml.cs">
+      <DependentUpon>ProfileWorkView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ReliableProfilePropertyView.xaml.cs">
+      <DependentUpon>ReliableProfilePropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SeqTransferPropertyView.xaml.cs">
+      <DependentUpon>SeqTransferPropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SwitchView1.xaml.cs">
+      <DependentUpon>SwitchView1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SwitchView2.xaml.cs">
+      <DependentUpon>SwitchView2.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\SwitchViewWindow.xaml.cs">
+      <DependentUpon>SwitchViewWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TerminalPropertyView.xaml.cs">
+      <DependentUpon>TerminalPropertyView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\ToolItemsBoxView.xaml.cs">
+      <DependentUpon>ToolItemsBoxView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\UserDataGridView.xaml.cs">
+      <DependentUpon>UserDataGridView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\WelcomeView.xaml.cs">
+      <DependentUpon>WelcomeView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="Common\ChartCommon\CtrlLine.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\CtrlMultiSelector.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\CtrlNode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\CtrlShape.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\DescEditor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\DockNode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\LinkBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\LinkNode.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\OEntranceShape.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\OExitShape.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\OInterfaceInteractionLink.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\ChartCommon\OInterfaceInteractionObject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\ChartCommon\OInterfaceTestedObject.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Common\ChartCommon\OMiMo.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\OOperationShape.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\OProbabilityTransfer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\OReliableProfile.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\OSequentialTransfer.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\OTerminalShape.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Common\ChartCommon\ShapeBase.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="View\BothWayBindView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\EntrancePropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ExitPropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InterfaceConfigDataGridView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InterfaceCrossLinkPropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InterfaceInteractionModelingView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InterfaceInteractionObjectPropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InterfaceInteractionTestedObjectPropertyView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InterfaceInteractionToolView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InterfaceInteractionWorkView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\InterfacePropertyView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageGroupAddView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageGroupUserControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageGroupView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageManagerUserControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageManagerView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageUserControlView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MessageView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\OEntranceShape.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="View\OperationPropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProbTransferPropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ProfileWorkView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ReliableProfilePropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SeqTransferPropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SwitchView1.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SwitchView2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\SwitchViewWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\TerminalPropertyView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\ToolItemsBoxView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\UserDataGridView.xaml">
+      <SubType>Form</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\WelcomeView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <AppDesigner Include="Properties\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="View\NetIco.ico">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

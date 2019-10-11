@@ -1,0 +1,23 @@
+﻿<UserControl x:Class="ModelingToolsApp.UserControls.OMiMo"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+            
+             Height="42" Width="102">
+    <Grid>
+        <Polyline Points="51,0 51,42" Stroke="Black" ></Polyline>
+        <Polyline Points="30,13 51,13" Stroke="Black"></Polyline>
+        <Polyline Points="30,26 51,26" Stroke="Black"></Polyline>
+        <Polyline Points="30,39 51,39" Stroke="Black"></Polyline>
+        <Polyline Points="51,0 51,42" Stroke="Black" ></Polyline>
+        <Polyline Points="72,8 51,8" Stroke="Black"></Polyline>
+        <Polyline Points="72,21 51,21" Stroke="Black"></Polyline>
+        <Polyline Points="72,34 51,34" Stroke="Black"></Polyline>
+        <!--
+        <Polyline Points="0,20 100,20" Stroke="Black" StrokeDashArray="2,2" ToolTip="概率转移" HorizontalAlignment="Center" VerticalAlignment="Center"></Polyline>
+        -->
+        <Label HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,18"></Label>
+
+        <Polyline  x:Name="path" Points="51,0 51,8 72,8 51,8 51,13 30,13 51,13 51,21 30,21 51,21 51,26 30,26 51,26 51,34 30,34 51,34 51,39 30,39 51,39" Stroke="Transparent" ToolTip="多条件选择" StrokeThickness="13" 
+                  HorizontalAlignment="Center" VerticalAlignment="Center" MouseEnter="Polyline_MouseEnter"></Polyline>
+    </Grid>
+</UserControl>

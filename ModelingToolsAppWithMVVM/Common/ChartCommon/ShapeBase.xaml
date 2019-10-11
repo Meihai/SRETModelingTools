@@ -1,0 +1,25 @@
+﻿<UserControl x:Class="ModelingToolsAppWithMVVM.Common.ChartCommon.ShapeBase"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"            
+             xmlns:uc="clr-namespace:ModelingToolsAppWithMVVM.Common.ChartCommon"            
+             Height="60" Width="120">
+        
+        <Grid x:Name="viewer">     
+        
+        <Path x:Name="pathShape" Stroke="Black" StrokeThickness="1" Fill="White">
+           
+           
+        </Path>
+        <TextBox x:Name="txtDescription" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="10,0,10,0" Background="Transparent"
+                  TextWrapping="Wrap"  BorderThickness="0" IsReadOnly="True" VerticalScrollBarVisibility="Auto"></TextBox>
+        <Path x:Name="pathShapeEx"  Fill="Transparent" MouseDown="pathShapeEx_MouseDown" MouseEnter="pathShapeEx_MouseEnter"  ></Path>
+        
+        <uc:LinkNode x:Name="lLinkNode" HorizontalAlignment="Left" VerticalAlignment="Center" LinkNodeType="LEFT" ></uc:LinkNode>
+        <uc:LinkNode x:Name="tLinkNode" HorizontalAlignment="Center" VerticalAlignment="Top" LinkNodeType="TOP" ></uc:LinkNode>
+        <uc:LinkNode x:Name="rLinkNode" HorizontalAlignment="Right" VerticalAlignment="Center" LinkNodeType="RIGHT" ></uc:LinkNode>
+        <uc:LinkNode x:Name="bLinkNode" HorizontalAlignment="Center" VerticalAlignment="Bottom" LinkNodeType="BOTTOM" ></uc:LinkNode>
+        <!--
+        <uc:LinkNode x:Name="cLinkNode" HorizontalAlignment="Center" VerticalAlignment="Center" LinkNodeType="Center"></uc:LinkNode>
+        -->
+    </Grid>
+</UserControl>
