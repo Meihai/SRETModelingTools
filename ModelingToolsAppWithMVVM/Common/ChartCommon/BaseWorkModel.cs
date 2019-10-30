@@ -46,7 +46,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         /// <summary>
         /// 当前工作区中所有已经添加的形状
         /// </summary>
-        protected  ObservableCollection<IFlowChartBase> AllShapes = new ObservableCollection<IFlowChartBase>();
+        public  ObservableCollection<IFlowChartBase> AllShapes = new ObservableCollection<IFlowChartBase>();
         /// <summary>
         /// 当前工作区所拥有的建模元素
         /// </summary>
@@ -206,7 +206,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             GCtrlShape.evtPrepareToChangePosition += new delPrepareToChangePosition(GCtrlShape_evtPrepareToChangePosition);
             GCtrlShape.evtPositionChanged += new delPositionChanged(GCtrlShape_evtPositionChanged);
             GCtrlLine.evtTerminalPointMoved += new delTerminalPointMoved(GCtrlLine_evtTerminalPointMoved);
-                      
+                     
 
             //确定几个顶层控件
             Canvas.SetZIndex(GMoveShape, int.MaxValue - 5);
@@ -816,7 +816,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         /// 添加形状
         /// </summary>
         /// <param name="ifcb"></param>
-        protected virtual void AddShapes(IFlowChartBase ifcb)
+        public virtual void AddShapes(IFlowChartBase ifcb)
         {
             for (int i = 0; i < AllShapes.Count; i++)
             {
@@ -851,9 +851,9 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             ifcb.ChangePositionAndSize(0, 0, 0, 0);
         }
 
-      
 
-        public void MenuItem_Click_NewFile(object sender, RoutedEventArgs e)
+        #region 创建新流程图文件
+        public void New_Executed(object sender, RoutedEventArgs e)
         {
             CreateNewFlowChart(System.Guid.NewGuid().ToString());
         }
@@ -873,6 +873,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
 
             AllShapes.Clear();
         }
+        #endregion 创建新流程图文件
 
         protected void FlowChartEditor_evtRefreshTmpLine(Geometry geometry)
         {
@@ -959,7 +960,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
 
         protected virtual void FlowChartEditor_evtMouseDownOnLinkNode(LinkNodeArgs linkNodeArgs)
         {
-            IsLinkNodeDown = true;           
+            IsLinkNodeDown = true;       
 
         }
 
@@ -1088,8 +1089,15 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             openFile.Filter = "Designer Files (*.xml)|*.xml|All Files (*.*)|*.*";
 
             if (openFile.ShowDialog() == true)
-            {
-               LoadXml(this,openFile.FileName);
+            { 
+               //先删除原来存在的部分
+                for (int i = 0; i < AllShapes.Count; i++)
+                {
+                    this.Children.Remove((UserControl)AllShapes[i]);
+                }
+                AllShapes.Clear();   
+                //再进行加载
+                LoadXml(this,openFile.FileName);
             }        
 
         }
@@ -1169,7 +1177,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             xmlElement.AppendChild(connectionItemsXml);
         }
 
-        private void LoadXml(BaseWorkModel baseModel, string fileName)
+        protected virtual void LoadXml(BaseWorkModel baseModel, string fileName)
         {
             XmlDocument xmlDocument = new XmlDocument();
             xmlDocument.Load(fileName);
@@ -1193,14 +1201,16 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
                         ShapeBase obj = assembly.CreateInstance("ModelingToolsAppWithMVVM.Common.ChartCommon." + designeritemXe.Name) as ShapeBase;
                         Type type = obj.GetType();
                         var props = type.GetProperties();
+                        int i = 0;
                         foreach (var prop in props)
                         {
-                            XmlNodeList attributeItemNodeList = designeritemXe.ChildNodes;
+                            XmlNodeList attributeItemNodeList = designeritemXe.ChildNodes;                         
                             foreach (XmlElement attributeXe in attributeItemNodeList)
                             {
                                 if (attributeXe.Name == prop.Name)
                                 {
-                                    prop.SetValue(obj, Convert.ChangeType(attributeXe.InnerText, prop.PropertyType));
+                                    object objValue= ConvertHelper.ChangeType(attributeXe.InnerText, prop.PropertyType);                                
+                                    prop.SetValue(obj, objValue);
                                 }
                             }                           
                         }
@@ -1223,7 +1233,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
                             {
                                 if (attributeXe.Name == prop.Name)
                                 {
-                                    prop.SetValue(obj, Convert.ChangeType(attributeXe.InnerText, prop.PropertyType));
+                                    prop.SetValue(obj, ConvertHelper.ChangeType(attributeXe.InnerText, prop.PropertyType));
                                 }
                             }
                         }
@@ -1239,7 +1249,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             }
         }
 
-        #endregion
+        #endregion 数据持久化到xml部分
 
     }
 }

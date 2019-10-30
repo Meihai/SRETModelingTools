@@ -197,6 +197,7 @@
     <Compile Include="Common\ChartCommon\SimpleLinkNode.cs" />
     <Compile Include="Common\ComparisonMode.cs" />
     <Compile Include="Common\ContinuousVariable.cs" />
+    <Compile Include="Common\ConvertHelper.cs" />
     <Compile Include="Common\CrcUtils.cs" />
     <Compile Include="Common\DataBitTypes.cs" />
     <Compile Include="Common\DataMeaning.cs" />
@@ -251,11 +252,7 @@
     <Compile Include="Model\SeqTransferPropertyModel.cs" />
     <Compile Include="Model\TerminalPropertyModel.cs" />
     <Compile Include="Model\TreeViewItemModel.cs" />
-    <Compile Include="Model\User.cs" />
-    <Compile Include="Model\UserInfoModel.cs" />
-    <Compile Include="Model\WelcomeModel.cs" />
     <Compile Include="Test\MessageTestUtil.cs" />
-    <Compile Include="ViewModel\BothWayBindViewModel.cs" />
     <Compile Include="ViewModel\EntrancePropertyViewModel.cs" />
     <Compile Include="ViewModel\ExitPropertyViewModel.cs" />
     <Compile Include="ViewModel\InterfaceCrossLinkPropertyViewModel.cs" />
@@ -266,25 +263,17 @@
     <Compile Include="ViewModel\InterfacePropertyViewModel.cs" />
     <Compile Include="ViewModel\IOShape.cs" />
     <Compile Include="ViewModel\ISelectable.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\MessageGroupViewModel.cs" />
     <Compile Include="ViewModel\MessageManagerViewModel.cs" />
     <Compile Include="ViewModel\MessageViewModel.cs" />
+    <Compile Include="ViewModel\ModelingSubWindowViewModel.cs" />
     <Compile Include="ViewModel\OperationPropertyViewModel.cs" />
     <Compile Include="ViewModel\ProbTransferPropertyViewModel.cs" />
     <Compile Include="ViewModel\ProfileWorkViewModel.cs" />
     <Compile Include="ViewModel\ReliableProfilePropertyViewModel.cs" />
     <Compile Include="ViewModel\SeqTransferPropertyViewModel.cs" />
-    <Compile Include="ViewModel\SwitchView1ViewModel.cs" />
-    <Compile Include="ViewModel\SwitchView2ViewModel.cs" />
-    <Compile Include="ViewModel\SwitchViewViewModel.cs" />
     <Compile Include="ViewModel\TerminalPropertyViewModel.cs" />
-    <Compile Include="ViewModel\UserViewModel.cs" />
     <Compile Include="ViewModel\ViewModelLocator.cs" />
-    <Compile Include="ViewModel\WelcomeViewModel.cs" />
-    <Compile Include="View\BothWayBindView.xaml.cs">
-      <DependentUpon>BothWayBindView.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\EntrancePropertyView.xaml.cs">
       <DependentUpon>EntrancePropertyView.xaml</DependentUpon>
     </Compile>
@@ -336,6 +325,9 @@
     <Compile Include="View\MessageView.xaml.cs">
       <DependentUpon>MessageView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="View\ModelingSubWindowTemplate.xaml.cs">
+      <DependentUpon>ModelingSubWindowTemplate.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\OEntranceShape.xaml.cs">
       <DependentUpon>OEntranceShape.xaml</DependentUpon>
     </Compile>
@@ -354,26 +346,11 @@
     <Compile Include="View\SeqTransferPropertyView.xaml.cs">
       <DependentUpon>SeqTransferPropertyView.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\SwitchView1.xaml.cs">
-      <DependentUpon>SwitchView1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SwitchView2.xaml.cs">
-      <DependentUpon>SwitchView2.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\SwitchViewWindow.xaml.cs">
-      <DependentUpon>SwitchViewWindow.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\TerminalPropertyView.xaml.cs">
       <DependentUpon>TerminalPropertyView.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\ToolItemsBoxView.xaml.cs">
       <DependentUpon>ToolItemsBoxView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\UserDataGridView.xaml.cs">
-      <DependentUpon>UserDataGridView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="View\WelcomeView.xaml.cs">
-      <DependentUpon>WelcomeView.xaml</DependentUpon>
     </Compile>
     <Page Include="Common\ChartCommon\CtrlLine.xaml">
       <Generator>MSBuild:Compile</Generator>
@@ -467,10 +444,6 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\BothWayBindView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\EntrancePropertyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -539,6 +512,10 @@
       <SubType>Form</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="View\ModelingSubWindowTemplate.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="View\OEntranceShape.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -563,31 +540,11 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\SwitchView1.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\SwitchView2.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\SwitchViewWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\TerminalPropertyView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="View\ToolItemsBoxView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\UserDataGridView.xaml">
-      <SubType>Form</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="View\WelcomeView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

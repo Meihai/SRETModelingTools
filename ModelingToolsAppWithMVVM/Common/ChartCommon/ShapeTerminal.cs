@@ -22,6 +22,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         {
             SetSerializeAttributes();
             Description = "终止";
+            FlowChartType=FlowChartTypes.ShapeTerminal;
         }
 
         public override void CreateShape()
@@ -80,13 +81,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
 
      
 
-        //Height 不需要
-        //Width  不需要
-
-        public override FlowChartTypes FlowChartType
-        {
-            get { return FlowChartTypes.ShapeTerminal; }
-        }
+           
 
         private TerminalSM propertyModel;
 

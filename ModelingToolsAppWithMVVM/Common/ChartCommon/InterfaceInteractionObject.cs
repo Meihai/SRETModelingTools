@@ -16,6 +16,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         {
             Description = "交联对象";
             toPropertyModel();
+            FlowChartType=FlowChartTypes.InterfaceInteractionObject; 
         }
 
         public override void CreateShape()
@@ -40,11 +41,20 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
 
         public override void RepositionLinkNode()
         {
-            double radius = Math.Min(Width, Height) / 2.0;
+            double radius = Math.Min(Width, Height) / 2.0;          
             lLinkNode.Center = new Point(CtrlNodeSize + Width / 2.0 - radius, Height / 2.0);//左边的控制点
+            lLinkNode.Margin = new Thickness(CtrlNodeSize + 0.46 * Width - radius, 0, 0, 0);
+
             tLinkNode.Center = new Point(Width / 2.0, CtrlNodeSize + Height / 2.0 - radius);//上边的控制点
+            tLinkNode.Margin = new Thickness(0, CtrlNodeSize + 0.46 * Height - radius, 0, 0);
+
             rLinkNode.Center = new Point(Width - CtrlNodeSize - (Width / 2.0 - radius), Height / 2.0);//右边的控制点
+            rLinkNode.HorizontalAlignment = HorizontalAlignment.Left;
+            rLinkNode.Margin = new Thickness(Width - CtrlNodeSize - (0.65 * Width - radius), 0, 0, 0);
+
             bLinkNode.Center = new Point(Width / 2.0, Height - CtrlNodeSize - (Height / 2.0 - radius));//下边的控制点
+            bLinkNode.VerticalAlignment = VerticalAlignment.Top;
+            bLinkNode.Margin = new Thickness(0, Height - CtrlNodeSize - (0.65 * Height - radius), 0, 0);
 
             //cLinkNode.Center = new Point(Width / 2.0, Height / 2.0);
         }
@@ -65,11 +75,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         }
 
 
-        public override FlowChartTypes FlowChartType
-        {
-            get { return FlowChartTypes.InterfaceInteractionObject; }
-        }
-
+     
         private IIObjectSM propertyModel;
 
         private void toPropertyModel()

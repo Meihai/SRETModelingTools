@@ -247,9 +247,10 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             set { this._offset = value; }
         }
 
-        public abstract FlowChartTypes FlowChartType
+        public  FlowChartTypes FlowChartType
         {
             get;
+            internal set;
         }
 
         public abstract void CreateShape();
@@ -396,9 +397,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         }
 
 
-        public List<string> Attributes { get; internal set; }
-
-     
+       
 
         #endregion
 
@@ -500,7 +499,6 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
                 for (int i = 0; i < this.LinkNodes.Count; i++)
                 {
                     double size = 6.5;
-
                     if (p.X <= LinkNodes[i].Position.X + size && p.X >= LinkNodes[i].Position.X - size &&
                         p.Y <= LinkNodes[i].Position.Y + size && p.Y >= LinkNodes[i].Position.Y - size)
                     {
@@ -558,54 +556,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             set;
         }
         #endregion 为持久化添加额外的属性
-        public virtual XmlElement ToXml()
-        {
-            XmlDocument xmlDocument = new XmlDocument();
-            XmlElement designerItemXml = xmlDocument.CreateElement(string.Empty, "DesignerItem", string.Empty);
-            //if (shapeBase.ChildModelArea != null)
-            //{
-            //    XmlElement childModelAreaXml = xmlDocument.CreateElement(string.Empty, "ChildModelArea", string.Empty);
-            //    SerializeModelItems(shapeBase.ChildModelArea, xmlDocument, childModelAreaXml);
-            //    designerItemXml.AppendChild(childModelAreaXml);
-            //}
-            XmlElement leftXml = xmlDocument.CreateElement(string.Empty, "Left", string.Empty);
-            leftXml.InnerText = (this.Margin.Left.ToString());
-            designerItemXml.AppendChild(leftXml);
-
-            XmlElement topXml = xmlDocument.CreateElement(string.Empty, "Top", string.Empty);
-            topXml.InnerText = (this.Margin.Top.ToString());
-            designerItemXml.AppendChild(topXml);
-
-            XmlElement widthXml = xmlDocument.CreateElement(string.Empty, "Width", string.Empty);
-            widthXml.InnerText = (this.Width.ToString());
-            designerItemXml.AppendChild(widthXml);
-
-            XmlElement heightXml = xmlDocument.CreateElement(string.Empty, "Height", string.Empty);
-            heightXml.InnerText = (this.Height.ToString());
-            designerItemXml.AppendChild(heightXml);
-
-            XmlElement IdXml = xmlDocument.CreateElement(string.Empty, "ID", string.Empty);
-            IdXml.InnerText = (this.Id.ToString());
-            designerItemXml.AppendChild(IdXml);
-
-            XmlElement zIndexXml = xmlDocument.CreateElement(string.Empty, "zIndex", string.Empty);
-            zIndexXml.InnerText = (Canvas.GetZIndex(this).ToString());
-            designerItemXml.AppendChild(zIndexXml);
-
-            XmlElement typeXml = xmlDocument.CreateElement(string.Empty, "type", string.Empty);
-            typeXml.InnerText = (this.FlowChartType.ToString());
-            designerItemXml.AppendChild(typeXml);
-
-            XmlElement descriptionXml = xmlDocument.CreateElement(string.Empty, "description", string.Empty);
-            descriptionXml.InnerText = (this.Description);
-            designerItemXml.AppendChild(descriptionXml);
-
-            XmlElement cloneSourceIdXml = xmlDocument.CreateElement(string.Empty, "cloneSourceId", string.Empty);
-            cloneSourceIdXml.InnerText = (this.CloneSourceId);
-            designerItemXml.AppendChild(cloneSourceIdXml);
-            return designerItemXml;            
-        }
-      
+     
                 
         
     }

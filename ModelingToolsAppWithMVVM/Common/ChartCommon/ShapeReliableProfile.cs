@@ -22,6 +22,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         {
             Description = "包";
             toPropertyModel();
+            FlowChartType=FlowChartTypes.ShapeReliableProfile;
         }
 
         public override void CreateShape()
@@ -75,10 +76,10 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         }
 
 
-        public override FlowChartTypes FlowChartType
-        {
-            get { return FlowChartTypes.ShapeReliableProfile; }
-        }
+        //public override FlowChartTypes FlowChartType
+        //{
+        //    get { return FlowChartTypes.ShapeReliableProfile; }
+        //}
 
         private ReliableProfileSM propertyModel;
 
@@ -108,7 +109,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
 
         internal override void SetSerializeAttributes()
         {
-            SerializeAttributes = new List<string> { "Left", "Top", "Width", "Height", "Id", "ZIndex", "FlowChartType", "Description", "CloneSourceId" };
+            SerializeAttributes = new List<string> { "Left", "Top", "Width", "Height", "Id", "ZIndex", "FlowChartType", "Description", "CloneSourceId", "ChildWorkModel" };
         }
     }
 }

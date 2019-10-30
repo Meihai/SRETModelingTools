@@ -30,6 +30,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         {
             LinkLineType = LinkLineTypes.Broken;
             LineType = LineTypes.Solid;
+            FlowChartType=FlowChartTypes.ShapeSeqTransfer;
         }
 
         public LinkSeqTransfer(LineTypes lineType)
@@ -37,6 +38,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         {
             LinkLineType = LinkLineTypes.Broken;
             LineType = lineType;
+            FlowChartType = FlowChartTypes.ShapeSeqTransfer;
         }
 
         public LinkSeqTransfer(Point startPoint, Point endPoint)
@@ -536,13 +538,9 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             CreateShape();
         }
 
-        public override FlowChartTypes FlowChartType
-        {
-            get { return FlowChartTypes.ShapeSeqTransfer; }
-        }
+      
 
         private LinkSeqTransferSM propertyModel;
-
 
         public void toPropertyModel()
         {
@@ -574,8 +572,11 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
                 "StartPnt_Position_X","StartPnt_Position_Y",
                 "StartPnt_DockedFlag","StartPnt_RelatedShapeId","StartPnt_RelatedType",
                 "EndPnt_Position_X","EndPnt_Position_Y",
-                "EndPnt_DockedFlag","EndPnt_RelatedShapeId","EndPnt_RelatedType"};
+                "EndPnt_DockedFlag","EndPnt_RelatedShapeId","EndPnt_RelatedType","ShapePnt"};
+            //还需要加ShapePnt,ShapePnt为点的集合，复杂属性
         }
+
+
 
     }
 }

@@ -41,16 +41,12 @@ namespace ModelingToolsAppWithMVVM.ViewModel
             ////    // Create run time view services and models
             ////    SimpleIoc.Default.Register<IDataService, DataService>();
             ////}
+                     
 
-            SimpleIoc.Default.Register<MainViewModel>();
-            SimpleIoc.Default.Register<WelcomeViewModel>();
-            SimpleIoc.Default.Register<BothWayBindViewModel>();
-            SimpleIoc.Default.Register<SwitchViewViewModel>();
             SimpleIoc.Default.Register<InterfacePropertyViewModel>();
             SimpleIoc.Default.Register<MessageManagerViewModel>();
             SimpleIoc.Default.Register<MessageGroupViewModel>();
-            SimpleIoc.Default.Register<MessageViewModel>();
-            SimpleIoc.Default.Register<UserViewModel>();
+            SimpleIoc.Default.Register<MessageViewModel>();      
             SimpleIoc.Default.Register<InterfaceInteractionModelingViewModel>();
             SimpleIoc.Default.Register<InterfaceInteractionWorkViewModel>();
             SimpleIoc.Default.Register<InterfaceCrossLinkPropertyViewModel>();
@@ -60,39 +56,7 @@ namespace ModelingToolsAppWithMVVM.ViewModel
         }
 
         #region สตภýปฏ
-        public MainViewModel Main
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<MainViewModel>();
-            }
-        }
-
-        public WelcomeViewModel Welcome
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<WelcomeViewModel>();
-            }
-        }
-
-        public BothWayBindViewModel BothWayBind
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<BothWayBindViewModel>();
-            }
-        }
-
-        public SwitchViewViewModel SwitchView
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<SwitchViewViewModel>();
-            }
-        }
-
-        
+            
         public InterfacePropertyViewModel InterfacePropertyView
         {
             get
@@ -132,14 +96,7 @@ namespace ModelingToolsAppWithMVVM.ViewModel
                 return ServiceLocator.Current.GetInstance<InterfaceInteractionModelingViewModel>();
             }
         }
-        public UserViewModel UserView
-        {
-            get
-            {
-                return ServiceLocator.Current.GetInstance<UserViewModel>();
-            }
-        }
-
+     
 
         public InterfaceInteractionWorkViewModel InterfaceInteractionWorkView{      
             get

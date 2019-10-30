@@ -23,6 +23,8 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         {
             Description = "";
             toPropertyModel();
+            FlowChartType=FlowChartTypes.ShapeEntrance; 
+            
         }
 
         public override void CreateShape()
@@ -97,10 +99,11 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         }
 
 
-        public override FlowChartTypes FlowChartType
-        {
-            get { return FlowChartTypes.ShapeEntrance; }
-        }
+        //public override FlowChartTypes FlowChartType
+        //{
+        //    get;
+        //    internal set;
+        //}
 
         private EntranceSM propertyModel;
 

@@ -21,6 +21,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         public ShapeOperation()
         {
             Description = "操作";
+            FlowChartType = FlowChartTypes.ShapeOperation;
         }
 
         public override void CreateShape()
@@ -74,10 +75,10 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         }
 
 
-        public override FlowChartTypes FlowChartType
-        {
-            get { return FlowChartTypes.ShapeOperation; }
-        }
+        //public override FlowChartTypes FlowChartType
+        //{
+        //    get { return FlowChartTypes.ShapeOperation; }
+        //}
 
         private OperationSM propertyModel;
 

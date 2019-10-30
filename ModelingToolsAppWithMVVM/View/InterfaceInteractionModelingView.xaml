@@ -38,6 +38,7 @@
               VerticalAlignment="Top">
                 <MenuItem Header="文件">
                     <MenuItem Header="新建"
+                              Command="{x:Static ApplicationCommands.New}"
                               />
                     <MenuItem Header="打开"
                               Command="{x:Static ApplicationCommands.Open}"

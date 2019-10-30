@@ -17,6 +17,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             LinkLineType = LinkLineTypes.Straight;
             LineType = LineTypes.Solid;
             toPropertyModel();
+            FlowChartType = FlowChartTypes.InterfaceInteractionLink; 
         }
 
         public InterfaceInteractionLink(Point startPoint, Point endPoint)
@@ -30,6 +31,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             LinkLineType = LinkLineTypes.Straight;
             LineType = LineTypes.Solid;
             toPropertyModel();
+            FlowChartType = FlowChartTypes.InterfaceInteractionLink;
         }
 
         public override void SetDescTextPosition()
@@ -287,10 +289,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             ChangePositionAndSize(cloneIfcb.Margin.Left - Margin.Left, cloneIfcb.Margin.Top - Margin.Top, 0, 0);
         }
 
-        public override FlowChartTypes FlowChartType
-        {
-            get { return FlowChartTypes.InterfaceInteractionLink; }
-        }
+      
 
         private IILinkSM propertyModel;
 
@@ -324,7 +323,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
                 "StartPnt_Position_X","StartPnt_Position_Y",
                 "StartPnt_DockedFlag","StartPnt_RelatedShapeId","StartPnt_RelatedType",
                 "EndPnt_Position_X","EndPnt_Position_Y",
-                "EndPnt_DockedFlag","EndPnt_RelatedShapeId","EndPnt_RelatedType"};
+                "EndPnt_DockedFlag","EndPnt_RelatedShapeId","EndPnt_RelatedType","ShapePnt"};
         }
 
       

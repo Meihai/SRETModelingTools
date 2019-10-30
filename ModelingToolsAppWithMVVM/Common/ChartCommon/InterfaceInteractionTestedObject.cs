@@ -17,6 +17,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         {
             Description = "被测对象";
             toPropertyModel();
+            FlowChartType=FlowChartTypes.InterfaceTestedObject; 
         }
 
         public override void CreateShape()
@@ -66,12 +67,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         }
 
 
-        public override FlowChartTypes FlowChartType
-        {
-            get { return FlowChartTypes.InterfaceTestedObject; }
-        }
-
-
+      
         private IITestedObjectSM propertyModel;
 
         private void toPropertyModel()

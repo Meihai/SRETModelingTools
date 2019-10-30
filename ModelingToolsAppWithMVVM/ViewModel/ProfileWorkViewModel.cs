@@ -25,8 +25,7 @@ namespace ModelingToolsAppWithMVVM.ViewModel
         }
 
         private void init()
-        {
-          
+        {          
             propertyView = new InterfaceInteractionObjectPropertyView();
             workPanelView = new ProfileWorkModel();
             ((Canvas)workPanelView).AllowDrop = true;
@@ -34,9 +33,7 @@ namespace ModelingToolsAppWithMVVM.ViewModel
             ((Canvas)workPanelView).Background = new SolidColorBrush(Colors.White);
             ((Canvas)workPanelView).MinHeight = 1320;
             ((Canvas)workPanelView).MinWidth = 1000;
-            dealWithEvent();
-
-
+            dealWithEvent();            
         }
         private object propertyView;
 

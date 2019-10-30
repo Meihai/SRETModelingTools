@@ -21,6 +21,7 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         public ShapeExit()
         {
             Description = "出口";
+            FlowChartType=FlowChartTypes.ShapeExit;
         }
 
         public override void CreateShape()
@@ -91,10 +92,10 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
         }
 
 
-        public override FlowChartTypes FlowChartType
-        {
-            get { return FlowChartTypes.ShapeExit; }
-        }
+        //public override FlowChartTypes FlowChartType
+        //{
+        //    get { return FlowChartTypes.ShapeExit; }
+        //}
 
         private ExitSM propertyModel;
 

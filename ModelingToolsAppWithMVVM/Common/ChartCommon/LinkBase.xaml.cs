@@ -285,9 +285,10 @@ namespace ModelingToolsAppWithMVVM.Common.ChartCommon
             }
         }
 
-        public abstract FlowChartTypes FlowChartType
+        public FlowChartTypes FlowChartType
         {
             get;
+            internal set;
         }
 
         private PointCollection _range = new PointCollection();
